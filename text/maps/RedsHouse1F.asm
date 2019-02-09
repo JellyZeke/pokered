@@ -4,9 +4,9 @@ _MomWakeUpText::
 	cont "home some day."
 	cont "It said so on TV."
 
-	para "PROF.OAK, next"
-	line "door, is looking"
-	cont "for you."
+	para "Have Ishihara's"
+	line "favourite #MON"
+	cont ""
 	done
 
 _MomHealText1::

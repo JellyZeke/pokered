@@ -9,9 +9,9 @@ RedsHouse1FText1: ; Mom
 	TX_ASM
 	ld a, [wd72e]
 	bit 3, a
-	jr nz, .heal ; if player has received a Pokémon from Oak, heal team
 	ld hl, MomWakeUpText
 	call PrintText
+	callba SetIshiharaTeam
 	jr .done
 .heal
 	call MomHealPokemon
