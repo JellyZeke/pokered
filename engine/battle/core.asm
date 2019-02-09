@@ -6846,11 +6846,8 @@ InitOpponent:
 	jr InitBattleCommon
 
 DetermineWildOpponent:
-	ld a, [wd732]
-	bit 1, a
-	jr z, .asm_3ef2f
 	ld a, [hJoyHeld]
-	bit 1, a ; B button pressed?
+	and B_BUTTON
 	ret nz
 .asm_3ef2f
 	ld a, [wNumberOfNoRandomBattleStepsLeft]

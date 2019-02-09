@@ -237,6 +237,11 @@ OverworldLoopLessDelay::
 	ld a, [wPlayerDirection] ; current direction
 	ld [wPlayerMovingDirection], a ; save direction
 	call UpdateSprites
+
+    ld a, [hJoyHeld]
+    and B_BUTTON
+    jr nz, .noCollision
+
 	ld a, [wWalkBikeSurfState]
 	cp $02 ; surfing
 	jr z, .surfing
