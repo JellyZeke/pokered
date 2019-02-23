@@ -193,11 +193,11 @@ OaksLabScript7:
 OaksLabScript8:
 	ld a, [wPlayerStarter]
 	cp STARTER1
-	jr z, .Charmander
+	jr z, .Starter1
 	cp STARTER2
-	jr z, .Squirtle
-	jr .Bulbasaur
-.Charmander
+	jr z, .Starter2
+	jr .Starter3
+.Starter1
 	ld de, .MiddleBallMovement1
 	ld a, [wYCoord]
 	cp $4 ; is the player standing below the table?
@@ -221,7 +221,7 @@ OaksLabScript8:
 	db NPC_MOVEMENT_RIGHT
 	db $FF
 
-.Squirtle
+.Starter2
 	ld de, .RightBallMovement1
 	ld a, [wYCoord]
 	cp $4 ; is the player standing below the table?
@@ -247,7 +247,7 @@ OaksLabScript8:
 	db NPC_MOVEMENT_RIGHT
 	db $FF
 
-.Bulbasaur
+.Starter3
 	ld de, .LeftBallMovement1
 	ld a, [wXCoord]
 	cp $9 ; is the player standing to the right of the table?
@@ -385,15 +385,15 @@ OaksLabScript11:
 	ld [wCurOpponent], a
 	ld a, [wRivalStarter]
 	cp STARTER2
-	jr nz, .NotSquirtle
+	jr nz, .NotStarter2
 	ld a, $1
 	jr .done
-.NotSquirtle
+.NotStarter2
 	cp STARTER3
-	jr nz, .Charmander
+	jr nz, .Starter1
 	ld a, $2
 	jr .done
-.Charmander
+.Starter1
 	ld a, $3
 .done
 	ld [wTrainerNo], a
@@ -860,31 +860,11 @@ OaksLabScript_1d157:
 	ld c, 10
 	call DelayFrames
 	ld a, [wSpriteIndex]
-	cp $2
-	jr z, OaksLabLookAtCharmander
-	cp $3
-	jr z, OaksLabLookAtSquirtle
-	jr OaksLabLookAtBulbasaur
-
-OaksLabLookAtCharmander:
-	ld hl, OaksLabCharmanderText
+	ld hl, OaksLabStarterText
 	jr OaksLabMonChoiceMenu
-OaksLabCharmanderText:
-	TX_FAR _OaksLabCharmanderText
-	db "@"
 
-OaksLabLookAtSquirtle:
-	ld hl, OaksLabSquirtleText
-	jr OaksLabMonChoiceMenu
-OaksLabSquirtleText:
-	TX_FAR _OaksLabSquirtleText
-	db "@"
-
-OaksLabLookAtBulbasaur:
-	ld hl, OaksLabBulbasaurText
-	jr OaksLabMonChoiceMenu
-OaksLabBulbasaurText:
-	TX_FAR _OaksLabBulbasaurText
+OaksLabStarterText:
+	TX_FAR _OaksLabStarterText
 	db "@"
 
 OaksLabMonChoiceMenu:
